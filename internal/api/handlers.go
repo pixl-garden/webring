@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"firebase.google.com/go/db"
-	"github.com/yourusername/webring/internal/models"
+	"github.com/pixl-garden/webring/internal/models"
 )
 
 type Handler struct {

@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/notalim/pixl_garden_webring/internal/api"
-	"github.com/notalim/pixl_garden_webring/internal/database"
+	"github.com/pixl-garden/webring/internal/api"
+	"github.com/pixl-garden/webring/internal/database"
 )
 
 func main() {
