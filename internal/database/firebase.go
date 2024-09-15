@@ -1,23 +1,44 @@
-package database
+package handler
 
 import (
 	"context"
+	"log"
+	"os"
+	"sync"
 
 	firebase "firebase.google.com/go"
 	"firebase.google.com/go/db"
 	"google.golang.org/api/option"
 )
 
-func InitFirebase() (*db.Client, error) {
-	ctx := context.Background()
-	conf := &firebase.Config{
-		DatabaseURL: "https://pg-webring.firebaseio.com",
-	}
-	opt := option.WithCredentialsFile("config/firebase.json")
-	app, err := firebase.NewApp(ctx, conf, opt)
-	if err != nil {
-		return nil, err
-	}
+var (
+	dbClient *db.Client
+	once     sync.Once
+)
 
-	return app.Database(ctx)
+func initFirebase() {
+	once.Do(func() {
+		ctx := context.Background()
+		conf := &firebase.Config{
+			DatabaseURL: os.Getenv("FIREBASE_DATABASE_URL"),
+		}
+		
+		// Use Firebase credentials from environment variable
+		opt := option.WithCredentialsJSON([]byte(os.Getenv("FIREBASE_CREDENTIALS")))
+		
+		app, err := firebase.NewApp(ctx, conf, opt)
+		if err != nil {
+			log.Fatalf("Error initializing app: %v", err)
+		}
+
+		dbClient, err = app.Database(ctx)
+		if err != nil {
+			log.Fatalf("Error initializing database client: %v", err)
+		}
+	})
+}
+
+func GetDBClient() *db.Client {
+	initFirebase()
+	return dbClient
 }

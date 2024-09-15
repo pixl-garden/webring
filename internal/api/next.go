@@ -6,6 +6,7 @@ import (
 	"sort"
 
 	"github.com/pixl-garden/webring/internal/models"
+	"github.com/pixl-garden/webring/internal/database"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {

@@ -3,9 +3,12 @@ package handler
 import (
 	"fmt"
 	"net/http"
+	"github.com/pixl-garden/webring/internal/database"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	db := database.GetDBClient()
+
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	fmt.Fprint(w, `
 <!DOCTYPE html>

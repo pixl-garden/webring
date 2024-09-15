@@ -2,6 +2,8 @@ package handler
 
 import (
 	"net/http"
+	
+
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -15,3 +17,4 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	http.Redirect(w, r, prevSite, http.StatusFound)
 }
+
