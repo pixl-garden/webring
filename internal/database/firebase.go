@@ -11,9 +11,9 @@ import (
 func InitFirebase() (*db.Client, error) {
 	ctx := context.Background()
 	conf := &firebase.Config{
-		DatabaseURL: "https://your-project-id.firebaseio.com",
+		DatabaseURL: "https://pg-webring.firebaseio.com",
 	}
-	opt := option.WithCredentialsFile("path/to/your/service-account-key.json")
+	opt := option.WithCredentialsFile("config/firebase.json")
 	app, err := firebase.NewApp(ctx, conf, opt)
 	if err != nil {
 		return nil, err

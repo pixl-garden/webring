@@ -1,4 +1,4 @@
-module github.com/notalim/pixl_garden_webring
+module github.com/pixl-garden/webring
 
 go 1.22.6
 
