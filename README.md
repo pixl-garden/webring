@@ -22,7 +22,7 @@ How to use the webring:
     <a href="https://pg-webring.vercel.app/prev?site=YOUR_SITE_URL">
         Previous</a
     >
-    <a href="https://pg-webring.vercel.app">Webring</a>
+    <a href="https://pg-webring.vercel.app">Pixl Garden Webring</a>
     <a href="https://pg-webring.vercel.app/next?site=YOUR_SITE_URL">Next</a>
 </div>
 ```
@@ -30,7 +30,7 @@ How to use the webring:
 Here's the example of `CURL` request to become a member:
 
 ```bash
-curl -X POST https://xxx.app/members -H "Content-Type: application/json" -d '{
+curl -X POST https://xxx.app/api/members -H "Content-Type: application/json" -d '{
            "githubUsername": "github-username",
            "name": "Your Name",
            "website": "yourwebsite.com"
