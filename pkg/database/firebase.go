@@ -1,16 +1,14 @@
-package handler
+package database
 
 import (
 	"context"
 	"log"
 	"os"
-	"sort"
 	"sync"
 
 	firebase "firebase.google.com/go"
 	"firebase.google.com/go/db"
 	"google.golang.org/api/option"
-	"github.com/pixl-garden/webring/pkg/models"
 )
 
 var (
