@@ -30,7 +30,7 @@ How to use the webring:
 Here's the example of `CURL` request to become a member:
 
 ```bash
-curl -X POST https://xxx.app/api/members -H "Content-Type: application/json" -d '{
+curl -X POST https://pg-webring.vercel.app/api/members -H "Content-Type: application/json" -d '{
            "githubUsername": "github-username",
            "name": "Your Name",
            "website": "yourwebsite.com"
@@ -38,6 +38,5 @@ curl -X POST https://xxx.app/api/members -H "Content-Type: application/json" -d 
 
 ```
 
-Get the domain name from us (contact @notalim or anybody else in the team) and then make a PR to add your site to the list of members.
 
 by [@notalim](https://github.com/notalim)
