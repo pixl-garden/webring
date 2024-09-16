@@ -25,5 +25,5 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-	fmt.Fprintf(w, "Hello from Pixl Garden Webring! Running on Go %s", runtime.Version())
+	fmt.Fprintf(w, "pixl garden webring!") // TODO: add more info
 }
