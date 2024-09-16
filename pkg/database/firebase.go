@@ -4,11 +4,13 @@ import (
 	"context"
 	"log"
 	"os"
+	"sort"
 	"sync"
 
 	firebase "firebase.google.com/go"
 	"firebase.google.com/go/db"
 	"google.golang.org/api/option"
+	"github.com/pixl-garden/webring/pkg/models"
 )
 
 var (
@@ -41,4 +43,30 @@ func initFirebase() {
 func GetDBClient() *db.Client {
 	initFirebase()
 	return dbClient
+}
+
+func GetAdjacentSite(db *db.Client, currentSite string, next bool) (string, error) {
+	ctx := context.Background()
+	ref := db.NewRef("members")
+	var members map[string]models.Member
+	if err := ref.Get(ctx, &members); err != nil {
+		return "", err
+	}
+
+	var sites []string
+	for _, member := range members {
+		sites = append(sites, member.Website)
+	}
+	sort.Strings(sites)
+
+	for i, site := range sites {
+		if site == currentSite {
+			if next {
+				return sites[(i+1)%len(sites)], nil
+			}
+			return sites[(i-1+len(sites))%len(sites)], nil
+		}
+	}
+
+	return sites[0], nil
 }

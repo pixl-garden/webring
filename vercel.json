@@ -1,20 +1,8 @@
 {
-    "builds": [
-        {
-            "src": "api/*.go",
-            "use": "@vercel/go",
-            "config": { 
-                "goVersion": "1.22"
-            }
-        }
-    ],
     "routes": [
         { "src": "/", "dest": "/api/index.go" },
         { "src": "/next", "dest": "/api/next.go" },
         { "src": "/prev", "dest": "/api/prev.go" },
         { "src": "/api/members", "dest": "/api/members.go" }
-    ],
-    "env": {
-        "GO_VERSION": "1.22"
-    }
+    ]
 }

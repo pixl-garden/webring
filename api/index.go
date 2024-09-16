@@ -6,8 +6,6 @@ import (
 	"net/http"
 	"os"
 	"runtime"
-
-	"github.com/pixl-garden/webring/pkg/database"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {

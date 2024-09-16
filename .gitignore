@@ -19,6 +19,9 @@
 
 # Go workspace file
 go.work.sum
+go.mod
+go.sum
+
 
 # env file
 .env

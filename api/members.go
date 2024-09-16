@@ -3,16 +3,17 @@ package handler
 import (
 	"context"
 	"encoding/json"
+	"log"
 	"net/http"
 	"time"
 
-	"github.com/pixl-garden/webring/internal/models"
-	"github.com/pixl-garden/webring/internal/utils"
+	"github.com/pixl-garden/webring/pkg/models"
 	"github.com/pixl-garden/webring/pkg/database"
+	"github.com/pixl-garden/webring/pkg/utils"
 )
 
-func Handler(w http.ResponseWriter, r *http.Request) {
-	db := getDBClient()
+func MembersHandler(w http.ResponseWriter, r *http.Request) {
+	db := database.GetDBClient()
 
 	switch r.Method {
 	case http.MethodGet:
@@ -53,14 +54,18 @@ func addMember(w http.ResponseWriter, r *http.Request, db *db.Client) {
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(member)
 
-	var allMembers []models.Member
+	var allMembers map[string]models.Member
 	if err := ref.Get(ctx, &allMembers); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	if err := utils.UpdateReadme(allMembers); err != nil {
-		// Log the error, but don't return it to the client
+	memberSlice := make([]models.Member, 0, len(allMembers))
+	for _, m := range allMembers {
+		memberSlice = append(memberSlice, m)
+	}
+
+	if err := utils.UpdateReadme(memberSlice); err != nil {
 		log.Printf("Failed to update README: %v", err)
 	}
 }
