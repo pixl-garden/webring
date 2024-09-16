@@ -19,12 +19,25 @@ How to use the webring:
 
 ```html
 <div class="webring">
-    <a href="https://webring.pixl-garden.com/prev?site=YOUR_SITE_URL"
-        >Previous</a
+    <a href="https://pg-webring.vercel.app/prev?site=YOUR_SITE_URL">
+        Previous</a
     >
-    <a href="https://webring.pixl-garden.com">Webring</a>
-    <a href="https://webring.pixl-garden.com/next?site=YOUR_SITE_URL">Next</a>
+    <a href="https://pg-webring.vercel.app">Webring</a>
+    <a href="https://pg-webring.vercel.app/next?site=YOUR_SITE_URL">Next</a>
 </div>
 ```
+
+Here's the example of `CURL` request to become a member:
+
+```bash
+curl -X POST https://xxx.app/members -H "Content-Type: application/json" -d '{
+           "githubUsername": "jesalgandhi",
+           "name": "Jesal Gandhi",
+           "website": "https://jesal.zip"
+         }'
+
+```
+
+Get the domain name from us (contact @notalim or anybody else in the team) and then make a PR to add your site to the list of members.
 
 by [@notalim](https://github.com/notalim)
