@@ -26,7 +26,6 @@ func initFirebase() {
 			DatabaseURL: os.Getenv("FIREBASE_DATABASE_URL"),
 		}
 		
-		// Use Firebase credentials from environment variable
 		opt := option.WithCredentialsJSON([]byte(os.Getenv("FIREBASE_CREDENTIALS")))
 		
 		app, err := firebase.NewApp(ctx, conf, opt)
