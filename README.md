@@ -32,10 +32,10 @@ how to use the webring:
 here's the example of `curl` request to become a member:
 
 ```bash
-curl -x post https://pg-webring.vercel.app/api/members -h "content-type: application/json" -d '{
-"githubusername": "github-username",
+curl -X POST https://pg-webring.vercel.app/api/members -H "Content-Type: application/json" -d '{
+"githubUsername": "github-username",
 "name": "your name",
-"website": "yourwebsite.com"
+    "website": "yourwebsite.com"
 }'
 ```
 
