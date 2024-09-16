@@ -8,7 +8,7 @@ import (
 
 	"github.com/pixl-garden/webring/internal/models"
 	"github.com/pixl-garden/webring/internal/utils"
-	"github.com/pixl-garden/webring/internal/database"
+	"github.com/pixl-garden/webring/pkg/database"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {

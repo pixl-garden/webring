@@ -7,7 +7,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/pixl-garden/webring/internal/database"
+	"github.com/pixl-garden/webring/pkg/database"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
