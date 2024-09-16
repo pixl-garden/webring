@@ -43,7 +43,14 @@ func getMembers(w http.ResponseWriter, db *db.Client) {
 		log.Printf("Error getting members: %v", err)
 		return
 	}
-	json.NewEncoder(w).Encode(members)
+
+	memberSlice := make([]models.Member, 0, len(members))
+	for _, member := range members {
+		memberSlice = append(memberSlice, member)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(memberSlice)
 }
 
 func addMember(w http.ResponseWriter, r *http.Request, db *db.Client) {

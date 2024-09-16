@@ -5,14 +5,13 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"runtime"
 
 	"github.com/pixl-garden/webring/pkg/database"
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	log.Println("Handler called")
-	log.Printf("Go version: %s", runtime.Version())
+	// log.Println("Handler called")
+	// log.Printf("Go version: %s", runtime.Version())
 	
 	log.Println("FIREBASE_DATABASE_URL:", os.Getenv("FIREBASE_DATABASE_URL"))
 	log.Println("FIREBASE_CREDENTIALS length:", len(os.Getenv("FIREBASE_CREDENTIALS")))
@@ -31,10 +30,23 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 <head>
     <meta charset="UTF-8">
     <title>pixl garden</title>
+    <style>
+        #members-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        #members-list li {
+            margin: 5px 0;
+        }
+        #members-list a {
+            text-decoration: none;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>pixl garden</h1>
-    <h2>code collective</h2>
+    <p>code collective</p>
     <h3>members list</h3>
     <ul id="members-list">
         <!-- Members will be populated here -->
@@ -48,7 +60,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
                 const membersList = document.getElementById('members-list');
                 data.forEach(member => {
                     const listItem = document.createElement('li');
-                    listItem.innerHTML = '<a href="' + member.website + '">' + member.name + '</a>';
+                    listItem.innerHTML = '<a href="' + member.website + '">' + member.name.toLowerCase() + '</a>' +
+                                         ' - <a href="' + member.website + '">' + member.website + '</a>' +
+                                         ' - <a href="https://github.com/' + member.github + '">github</a>';
                     membersList.appendChild(listItem);
                 });
             })

@@ -1,41 +1,42 @@
-# Pixl Garden Webring
+# pixl garden webring
 
-A webring connecting the digital gardens of pixl_garden members.
+a webring connecting the digital gardens of pixl_garden members.
 
-## What's a Webring?
+## what's a webring?
 
-A webring is a collection of websites linked together in a circular structure, allowing visitors to navigate through related sites.
+a webring is a collection of websites linked together in a circular structure, allowing visitors to navigate through related sites.
 
-## Members
+## members
 
 <!-- MEMBERS_START -->
-<!-- This section will be automatically updated -->
+<!-- this section will be automatically updated -->
 <!-- MEMBERS_END -->
 
-How to use the webring:
+how to use the webring:
 
-1. Add your site to the list of members by submitting a pull request.
-2. Add the webring navigation to your site (example):
+1. add your site to the list of members by submitting a pull request.
+2. add the webring navigation to your site (example):
 
 ```html
 <div class="webring">
     <a href="https://pg-webring.vercel.app/prev?site=YOUR_SITE_URL">
-        Previous</a
+        prev</a
     >
-    <a href="https://pg-webring.vercel.app">Pixl Garden Webring</a>
-    <a href="https://pg-webring.vercel.app/next?site=YOUR_SITE_URL">Next</a>
+    <a href="https://pg-webring.vercel.app">pixl garden webring</a>
+    <a href="https://pg-webring.vercel.app/next?site=YOUR_SITE_URL">next</a>
 </div>
 ```
 
-Here's the example of `CURL` request to become a member:
+> add styling however you like.
+
+here's the example of `curl` request to become a member:
 
 ```bash
-curl -X POST https://pg-webring.vercel.app/api/members -H "Content-Type: application/json" -d '{
-           "githubUsername": "github-username",
-           "name": "Your Name",
-           "website": "yourwebsite.com"
-         }'
-
+curl -x post https://pg-webring.vercel.app/api/members -h "content-type: application/json" -d '{
+"githubusername": "github-username",
+"name": "your name",
+"website": "yourwebsite.com"
+}'
 ```
 
 
