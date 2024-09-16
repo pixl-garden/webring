@@ -31,9 +31,9 @@ Here's the example of `CURL` request to become a member:
 
 ```bash
 curl -X POST https://xxx.app/members -H "Content-Type: application/json" -d '{
-           "githubUsername": "jesalgandhi",
-           "name": "Jesal Gandhi",
-           "website": "https://jesal.zip"
+           "githubUsername": "github-username",
+           "name": "Your Name",
+           "website": "yourwebsite.com"
          }'
 
 ```
